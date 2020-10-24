@@ -13,7 +13,9 @@ class App extends Component {
           <h1>Hello World!</h1>
           <h2>jason</h2>
           <Candy/>
-          <CompJason/>
+
+          
+          <CompJason hairColour="black"></CompJason>
           <a
             className="App-link"
             href="https://reactjs.org"

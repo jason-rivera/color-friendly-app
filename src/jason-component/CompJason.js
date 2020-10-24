@@ -1,10 +1,10 @@
 import React from 'react'
 import "./CompJason.css";
 
-const CompJason = () => {
+const CompJason = ({hairColour}) => {
   return (
     <div class="button">
-      'Go' button
+      {hairColour} 'Go' button
     </div>
   )
 }
