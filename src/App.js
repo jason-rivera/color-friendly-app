@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
+import Candy from "./candy/Candy";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Hello World!</h1>
           <h2>jason</h2>
+          <Candy/>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -19,6 +21,7 @@ class App extends Component {
             Learn React
           </a>
         </header>
+  
       </div>
     );
   }
