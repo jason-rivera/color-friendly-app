@@ -3,6 +3,7 @@ import "./App.css";
 import React, { Component } from "react";
 import Candy from "./candy/Candy";
 import CompJason from "./jason-component/CompJason";
+import Checkbox from "./jason-component/Checkbox";
 
 class App extends Component {
   render() {
@@ -17,6 +18,10 @@ class App extends Component {
 =======
           <Candy name="Candy"> </Candy>
           <CompJason hairColour="black"></CompJason>
+          <Checkbox/>
+          <Checkbox/>
+          <Checkbox/>
+          <Checkbox/>
           <a
             className="App-link"
             href="https://reactjs.org"
