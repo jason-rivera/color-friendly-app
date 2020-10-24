@@ -6,6 +6,17 @@ import CompJason from "./jason-component/CompJason";
 import Checkbox from "./jason-component/Checkbox";
 
 class App extends Component {
+
+constructor() {
+  super()
+  this.state = {
+    imageUploaded: false,
+    imageURL: '',
+    deteuranopia: false,
+    protanopia: false,
+  }
+}
+
   render() {
     return (
       <div className="App">
