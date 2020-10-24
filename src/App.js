@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
 import Candy from "./candy/Candy";
+import CompJason from "./jason-component/CompJason";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <h1>Hello World!</h1>
           <h2>jason</h2>
           <Candy/>
+          <CompJason/>
           <a
             className="App-link"
             href="https://reactjs.org"

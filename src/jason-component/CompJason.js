@@ -1,7 +1,7 @@
 import React from 'react'
-import "./App.css";
+import "./CompJason.css";
 
-const compJason = () => {
+const CompJason = () => {
   return (
     <div class="button">
       'Go' button
@@ -9,4 +9,4 @@ const compJason = () => {
   )
 }
 
-export default component-1
+export default CompJason
