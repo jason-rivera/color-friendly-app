@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Candy = () => {
+const Candy = ({name}) => {
 	return(
 		<div className='pa3' >
-			<p> Candy is so cool </p>
+			<p> {name} is so cool </p>
 		</div>
 	);
 }
