@@ -11,10 +11,11 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Hello World!</h1>
-          <h2>jason</h2>
-          <Candy/>
-
+          <h2>jason</h2>    
           
+      
+=======
+          <Candy name="Candy"> </Candy>
           <CompJason hairColour="black"></CompJason>
           <a
             className="App-link"
