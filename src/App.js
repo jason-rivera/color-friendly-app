@@ -28,14 +28,10 @@ class App extends Component {
             {" "}
             <i className="fas fa-eye"></i> ColorFriendly
           </h1>
-          <Row>
-            <Col>
-              <Card>
-                <CardImg
-                  variant="top"
-                  src=""
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
+          <Row className="justify-content-md-center">
+            <Col xl="6">
+              <Card className="mb-4">
+                <CardImg variant="top" src={cat} />
               </Card>
               <UploadForm />
             </Col>
