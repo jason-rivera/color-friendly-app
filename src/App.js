@@ -5,10 +5,10 @@ import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, CardImg } from "react-bootstrap";
 import axios from "axios";
-
 import UploadForm from "./components/UploadForm";
-
 import cat from "./images/cat.jpg";
+
+import {colorData} from "./Data";
 
 class App extends Component {
   constructor() {
@@ -17,12 +17,54 @@ class App extends Component {
       imageUploaded: false,
       input: "",
       imageURL: "",
-      deteuranopia: false,
-      protanopia: false,
+      redGreenBlindness: false,
+      yellowBlueBlindness: false,
+      dominantColors: []
     };
+
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onButtonSubmit = this.onButtonSubmit.bind(this);
+    this.determineColorFriendly = this.determineColorFriendly.bind(this);
   }
 
-  
+  // If r > 100 and g & b are 1/4r then it is "red"
+  // If g > 100 and r & b are 1/4g then it is "green"
+  // If the image contains green or red then it is not "color friendly"
+  // colors is an array of objects with red, blue, green keys
+  determineColorFriendly = (colors) => {
+    this.setState({redGreenBlindness: false});
+    this.setState({yellowBlueBlindness: false});
+
+    colors.map((color) => {
+      var {red, green, blue} = color;
+      var quarterRed = 0.25 * red;
+      var quarterGreen = 0.25 * green;
+
+      var redGreenDifference = Math.abs(red-green);
+      var maxGreenRed = Math.max(green, red);
+      var halfOfMaxGR = 0.5 * maxGreenRed;
+
+      if (red >= 100 && green <= quarterRed && blue <= quarterRed) {
+        this.setState({redGreenBlindness: true})
+        console.log("a");
+      }else if(green >= 100 && red <= quarterGreen && blue <= quarterGreen){
+        this.setState({redGreenBlindness: true});
+        console.log("b");
+      }
+
+      var blueGreenDifference = Math.abs(blue-green);
+      var maxBlueGreen = Math.max(blue, green);
+      var halfOfMaxBG = 0.5 * maxBlueGreen;
+
+      if (redGreenDifference <= 20 && blue <= halfOfMaxGR) {
+        this.setState({yellowBlueBlindness: true})
+        console.log("c");
+      }else if(blueGreenDifference <= 20 && red <= halfOfMaxBG){
+        this.setState({yellowBlueBlindness: true});
+        console.log("d");
+      }
+    })
+  };
 
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
@@ -49,15 +91,14 @@ class App extends Component {
       },
     })
     .then((response) => {
-      console.log(response.data);
       const data = response.data.dominantColors;
-      console.log(data);
+      this.determineColorFriendly(data);
     })
     .catch((error) => {
       console.log(error);
     });
   };
-  
+
 
   render() {
     return (
