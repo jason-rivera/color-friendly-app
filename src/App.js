@@ -22,6 +22,8 @@ class App extends Component {
     };
   }
 
+  
+
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
   };
@@ -46,9 +48,7 @@ class App extends Component {
         sourceType: "url",
       },
     })
-    .then((response) => {
-      console.log(response);
-    })
+    .then(response => response.json())
     .catch((error) => {
       console.log(error);
     });
