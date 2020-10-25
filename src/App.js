@@ -1,22 +1,24 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
-import Candy from "./candy/Candy";
-import CompJason from "./jason-component/CompJason";
-import Checkbox from "./jason-component/Checkbox";
-import ASH from "./ash-component/ASH"
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Card from "react-bootstrap/Card";
+import { Container, Row, Col, CardImg } from "react-bootstrap";
+
+import UploadForm from "./components/UploadForm";
+
+import cat from "./images/cat.jpg";
 
 class App extends Component {
-
-constructor() {
-  super()
-  this.state = {
-    imageUploaded: false,
-    imageURL: '',
-    deteuranopia: false,
-    protanopia: false,
+  constructor() {
+    super();
+    this.state = {
+      imageUploaded: false,
+      imageURL: "",
+      deteuranopia: false,
+      protanopia: false,
+    };
   }
-}
 
   render() {
     return (
