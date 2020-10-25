@@ -22,8 +22,8 @@ class App extends Component {
       imageUploaded: false,
       input: "",
       imageURL: "",
-      redGreenBlindness: false,
-      yellowBlueBlindness: false,
+      redGreenFriendly: true,
+      yellowBlueFriendly: true,
       dominantColors: []
     };
 
@@ -37,8 +37,8 @@ class App extends Component {
   // If the image contains green or red then it is not "color friendly"
   // colors is an array of objects with red, blue, green keys
   determineColorFriendly = (colors) => {
-    this.setState({redGreenBlindness: false});
-    this.setState({yellowBlueBlindness: false});
+    this.setState({redGreenFriendly: true});
+    this.setState({yellowBlueFriendly: true});
 
     colors.map((color) => {
       var {red, green, blue} = color;
@@ -50,10 +50,10 @@ class App extends Component {
       var halfOfMaxGR = 0.5 * maxGreenRed;
 
       if (red >= 100 && green <= quarterRed && blue <= quarterRed) {
-        this.setState({redGreenBlindness: true})
+        this.setState({redGreenFriendly: false})
         console.log("a");
       }else if(green >= 100 && red <= quarterGreen && blue <= quarterGreen){
-        this.setState({redGreenBlindness: true});
+        this.setState({redGreenFriendly: false});
         console.log("b");
       }
 
@@ -62,10 +62,10 @@ class App extends Component {
       var halfOfMaxBG = 0.5 * maxBlueGreen;
 
       if (redGreenDifference <= 20 && blue <= halfOfMaxGR) {
-        this.setState({yellowBlueBlindness: true})
+        this.setState({yellowBlueFriendly: false})
         console.log("c");
       }else if(blueGreenDifference <= 20 && red <= halfOfMaxBG){
-        this.setState({yellowBlueBlindness: true});
+        this.setState({yellowBlueFriendly: false});
         console.log("d");
       }
     })
@@ -125,8 +125,8 @@ class App extends Component {
           </Row>
         </Container>
         <Container className="text-center">
-          </LightButton name="Red-Green Blindness">
-          </LightButton name="Yellow-Blue Blind">
+          <LightButton name="Red-Green Friendly" isFriendly = {this.state.redGreenFriendly}/>
+          <LightButton name="Yellow-Blue Friendly" isFriendly = {this.state.yellowBlueFriendly}/>
         </Container>
 
       </div>
