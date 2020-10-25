@@ -21,29 +21,6 @@ constructor() {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Hello World!</h1>
-          <h2>jason</h2>    
-          
-      
-=======
-          <Candy name="Candy"> </Candy>
-          <CompJason hairColour="black"></CompJason>
-          <Checkbox/>
-          <Checkbox/>
-          <Checkbox/>
-          <Checkbox/>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-  
       </div>
     );
   }
