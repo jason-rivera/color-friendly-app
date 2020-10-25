@@ -48,7 +48,11 @@ class App extends Component {
         sourceType: "url",
       },
     })
-    .then(response => response.json())
+    .then((response) => {
+      console.log(response.data);
+      const data = response.data.dominantColors;
+      console.log(data);
+    })
     .catch((error) => {
       console.log(error);
     });
@@ -66,7 +70,7 @@ class App extends Component {
           <Row className="justify-content-md-center">
             <Col xl="6">
               <Card className="mb-4">
-                <CardImg variant="top" src={cat} />
+                <CardImg variant="top" src = {this.state.imageURL} />
               </Card>
               <UploadForm
                 onInputChange={this.onInputChange}
