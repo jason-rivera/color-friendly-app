@@ -28,7 +28,7 @@ class App extends Component {
 
   //When we press the submit button, we call the API
   onButtonSubmit = () => {
-    //this.setState({imageURL: this.state.input});
+    this.setState({imageURL: this.state.input});
 
     axios({
       method: "POST",
@@ -42,17 +42,18 @@ class App extends Component {
         useQueryString: true,
       },
       data: {
-        source: "https://cloud.google.com/vision/docs/images/bali_small.jpeg",
+        source: this.state.imageURL,
         sourceType: "url",
       },
     })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
+  
 
   render() {
     return (
