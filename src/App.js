@@ -7,12 +7,8 @@ import { Container, Row, Col, CardImg } from "react-bootstrap";
 import axios from "axios";
 import UploadForm from "./components/UploadForm";
 import cat from "./images/cat.jpg";
-
-import Checkbox from "./jason-component/Checkbox";
-import BlueButton from "./jason-component/BlueButton";
 import LightButton from "./jason-component/LightButton";
-import DarkButton from "./jason-component/DarkButton";
-import {colorData} from "./Data";
+
 
 
 class App extends Component {
@@ -21,7 +17,7 @@ class App extends Component {
     this.state = {
       imageUploaded: false,
       input: "",
-      imageURL: "",
+      imageURL: cat,
       redGreenFriendly: true,
       yellowBlueFriendly: true,
       dominantColors: []
@@ -37,29 +33,31 @@ class App extends Component {
   // If the image contains green or red then it is not "color friendly"
   // colors is an array of objects with red, blue, green keys
   determineColorFriendly = (colors) => {
-    this.setState({redGreenFriendly: true});
-    this.setState({yellowBlueFriendly: true});
 
+    console.log(colors);
     colors.map((color) => {
       var {red, green, blue} = color;
       var quarterRed = 0.25 * red;
       var quarterGreen = 0.25 * green;
 
+      var redBlueDifference = Math.abs(red-blue);
+
       var redGreenDifference = Math.abs(red-green);
       var maxGreenRed = Math.max(green, red);
       var halfOfMaxGR = 0.5 * maxGreenRed;
 
+      var blueGreenDifference = Math.abs(blue-green);
+      var maxBlueGreen = Math.max(blue, green);
+      var halfOfMaxBG = 0.5 * maxBlueGreen;
+
       if (red >= 100 && green <= quarterRed && blue <= quarterRed) {
         this.setState({redGreenFriendly: false})
         console.log("a");
-      }else if(green >= 100 && red <= quarterGreen && blue <= quarterGreen){
+      }else if(redBlueDifference <= 20 && green - redBlueDifference >= 20){
         this.setState({redGreenFriendly: false});
         console.log("b");
       }
 
-      var blueGreenDifference = Math.abs(blue-green);
-      var maxBlueGreen = Math.max(blue, green);
-      var halfOfMaxBG = 0.5 * maxBlueGreen;
 
       if (redGreenDifference <= 20 && blue <= halfOfMaxGR) {
         this.setState({yellowBlueFriendly: false})
@@ -78,6 +76,8 @@ class App extends Component {
   //When we press the submit button, we call the API
   onButtonSubmit = () => {
     this.setState({imageURL: this.state.input});
+    this.setState({redGreenFriendly: true});
+    this.setState({yellowBlueFriendly: true});
 
     axios({
       method: "POST",
@@ -86,7 +86,7 @@ class App extends Component {
       headers: {
         "content-type": "application/json",
         "x-rapidapi-host": "image-color-tag.p.rapidapi.com",
-        "x-rapidapi-key": "499dcdcab6msh608dfa419080928p1157c5jsnce01522b204d",
+        "x-rapidapi-key": "0e22180accmsh9a496466775e3d1p1b5633jsne17fc2e367fa",
         accept: "application/json",
         useQueryString: true,
       },
@@ -98,6 +98,7 @@ class App extends Component {
     .then((response) => {
       const data = response.data.dominantColors;
       this.determineColorFriendly(data);
+      this.setState({imageUploaded: true});
     })
     .catch((error) => {
       console.log(error);
