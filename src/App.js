@@ -126,8 +126,8 @@ class App extends Component {
           </Row>
         </Container>
         <Container className="text-center">
-          <LightButton name="Red-Green Friendly" isFriendly = {this.state.redGreenFriendly}/>
-          <LightButton name="Yellow-Blue Friendly" isFriendly = {this.state.yellowBlueFriendly}/>
+          <LightButton name="Red-Green Not Friendly" isFriendly = {this.state.redGreenFriendly}/>
+          <LightButton name="Yellow-Blue Not Friendly" isFriendly = {this.state.yellowBlueFriendly}/>
         </Container>
 
       </div>
