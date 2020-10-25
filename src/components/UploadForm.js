@@ -1,7 +1,7 @@
 import React from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 
-const UploadForm = () => {
+const UploadForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     // <form id="custom-form">
     //   <label id="custom-label">
@@ -11,9 +11,16 @@ const UploadForm = () => {
     // </form>
 
     <InputGroup>
-      <FormControl placeholder="Place your URL here" />
+      <FormControl 
+        placeholder="Place your URL here"
+        onChange={onInputChange} 
+      />
       <InputGroup.Append>
-        <Button variant="outline-secondary">Let's Go</Button>
+        <Button 
+          variant="outline-secondary"
+          onClick={onButtonSubmit}>
+          Let's Go
+        </Button>
       </InputGroup.Append>
     </InputGroup>
   );

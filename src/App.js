@@ -10,14 +10,48 @@ import UploadForm from "./components/UploadForm";
 import cat from "./images/cat.jpg";
 
 class App extends Component {
+
   constructor() {
     super();
     this.state = {
       imageUploaded: false,
+      input: "",
       imageURL: "",
       deteuranopia: false,
       protanopia: false,
     };
+  }
+
+
+  onInputChange = (event) => {
+    this.setState({input: event.target.value});
+  }
+
+  //When we press the submit button, we call the API
+  onButtonSubmit = () => {
+    //this.setState({imageURL: this.state.input});
+
+    fetch(
+        "https://image-color-tag.p.rapidapi.com/cloudVision/imageAttributesDetection", {
+        "method": "POST",
+        "mode": "no-cors",
+        "headers": {
+          "x-rapidapi-host": "image-color-tag.p.rapidapi.com",
+          "x-rapidapi-key": "499dcdcab6msh608dfa419080928p1157c5jsnce01522b204d",
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        "body": {
+          "source": "https://cloud.google.com/vision/docs/images/bali_small.jpeg",
+          "sourceType": "url"
+        }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -37,7 +71,10 @@ class App extends Component {
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
               </Card>
-              <UploadForm />
+              <UploadForm 
+                onInputChange = {this.onInputChange} 
+                onButtonSubmit = {this.onButtonSubmit}
+              />
             </Col>
           </Row>
         </Container>
