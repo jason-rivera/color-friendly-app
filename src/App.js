@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, CardImg } from "react-bootstrap";
+import axios from "axios";
 
 import UploadForm from "./components/UploadForm";
 
@@ -14,17 +15,49 @@ class App extends Component {
     super();
     this.state = {
       imageUploaded: false,
+      input: "",
       imageURL: "",
       deteuranopia: false,
       protanopia: false,
     };
   }
 
+  onInputChange = (event) => {
+    this.setState({ input: event.target.value });
+  };
+
+  //When we press the submit button, we call the API
+  onButtonSubmit = () => {
+    this.setState({imageURL: this.state.input});
+
+    axios({
+      method: "POST",
+      url:
+        "https://image-color-tag.p.rapidapi.com/cloudVision/imageAttributesDetection",
+      headers: {
+        "content-type": "application/json",
+        "x-rapidapi-host": "image-color-tag.p.rapidapi.com",
+        "x-rapidapi-key": "499dcdcab6msh608dfa419080928p1157c5jsnce01522b204d",
+        accept: "application/json",
+        useQueryString: true,
+      },
+      data: {
+        source: this.state.imageURL,
+        sourceType: "url",
+      },
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+  
+
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
-=======
         <Container>
           <h1 className="text-center color-title">
             {" "}
@@ -35,11 +68,13 @@ class App extends Component {
               <Card className="mb-4">
                 <CardImg variant="top" src={cat} />
               </Card>
-              <UploadForm />
+              <UploadForm
+                onInputChange={this.onInputChange}
+                onButtonSubmit={this.onButtonSubmit}
+              />
             </Col>
           </Row>
         </Container>
->>>>>>> 3a1d200e2c9db0b7c457733ea88421c8816f049c
       </div>
     );
   }
