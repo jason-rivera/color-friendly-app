@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Checkbox = () => {
+export const Checkbox = ({}) => {
   return (
-    <div>
-      <input type="checkbox" name="choice" value="yes"/> ColourBlindness
+    <div class>
+      <input type="checkbox" name="choice" value="yes" /> ColourBlindness
     </div>
   )
 }

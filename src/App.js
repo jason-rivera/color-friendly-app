@@ -5,10 +5,14 @@ import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, CardImg } from "react-bootstrap";
 import axios from "axios";
-
 import UploadForm from "./components/UploadForm";
 
 import cat from "./images/cat.jpg";
+
+import Checkbox from "./jason-component/Checkbox";
+import BlueButton from "./jason-component/BlueButton";
+import LightButton from "./jason-component/LightButton";
+import DarkButton from "./jason-component/DarkButton";
 
 class App extends Component {
   constructor() {
@@ -58,7 +62,7 @@ class App extends Component {
     });
   };
   
-
+  
   render() {
     return (
       <div className="App">
@@ -79,6 +83,11 @@ class App extends Component {
             </Col>
           </Row>
         </Container>
+        <Container className="text-center">
+          </LightButton name="Red-Green Blindness">
+          </LightButton name="Yellow-Blue Blind">
+        </Container>
+
       </div>
     );
   }
