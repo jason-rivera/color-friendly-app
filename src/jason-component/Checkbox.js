@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Checkbox = () => {
   return (
-    <div class="check">
+    <div class>
       <input type="checkbox" name="choice" value="yes"/> ColourBlindness
     </div>
   )

@@ -5,7 +5,7 @@ const UploadForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <InputGroup>
       <FormControl 
-        placeholder="Place your URL here"
+        placeholder="Paste your image URL here"
         onChange={onInputChange} 
       />
       <InputGroup.Append>
