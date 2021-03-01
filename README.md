@@ -1,3 +1,10 @@
 # ColorFriendly
+# SAP iXp Hack4Good
 
 An app that allows users to input an image URL to determine whether that image is visually accessible.
+
+Contributions
+- Candy Lin
+- Aishwarya Pawar
+- Jason Rivera
+- Tiago Villa
