@@ -5,6 +5,6 @@ An app that allows users to input an image URL to determine whether that image i
 
 Contributions
 - Candy Lin
-- Aishwarya Pawar
+- Ashwarya Pawar
 - Jason Rivera
 - Tiago Villa
